@@ -26,7 +26,7 @@ variable "rsa_bits" {
 variable "dns_names" {
   type = list(string)
   description = "(Optional) List of DNS names for which a certificate is being requested."
-  default = [ "" ]
+  default = [""]
 }
 
 variable "ip_addresses" {
@@ -36,7 +36,7 @@ variable "ip_addresses" {
 
 }
 
-variable "uri" {
+variable "uris" {
   type = list(string)
   description = "(Optional) List of URIs for which a certificate is being requested."
   default = [ "" ]

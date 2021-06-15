@@ -13,7 +13,7 @@ resource "tls_cert_request" "this" {
   
   dns_names    = var.dns_names # (Optional)
   ip_addresses = var.ip_addresses # (Optional)
-  uri          = var.uri # (Optional)
+  uris          = var.uris # (Optional)
 
   subject { # (Required)
     common_name         = var.common_name
