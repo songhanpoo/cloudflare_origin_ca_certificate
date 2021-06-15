@@ -8,7 +8,7 @@ variable "algorithm" {
   default = "RSA"
   validation {
     # regex(...) fails if it cannot find a match
-    condition     = can(regex("(RSA|ECDSA)", var.tls_private_key))
+    condition     = can(regex("^(RSA|ECDSA)$", var.algorithm))
     error_message = "(Required) The name of the algorithm to use for the key. Currently-supported values are \"RSA\" and \"ECDSA\"."
   }
 }
@@ -26,20 +26,25 @@ variable "rsa_bits" {
 variable "dns_names" {
   type = list(string)
   description = "(Optional) List of DNS names for which a certificate is being requested."
+  default = [ "" ]
 }
 
 variable "ip_addresses" {
   type = list(string)
   description = "(Optional) List of IP addresses for which a certificate is being requested."
+  default = [ "" ]
+
 }
 
 variable "uri" {
   type = list(string)
   description = "(Optional) List of URIs for which a certificate is being requested."
+  default = [ "" ]
 }
 
 variable "common_name" {
   type = string
+  default = ""
 }
 
 variable "organization" {
@@ -48,31 +53,39 @@ variable "organization" {
 
 variable "organizational_unit" {
   type = string
+  default = ""
+
 }
 
 variable "street_address" {
   type = list(string)
   description = "value"
+  default = [""]
 }
 
 variable "locality" {
   type = string  
+  default = ""
 }
 
 variable "province" {
   type = string  
+  default = ""
 }
 
 variable "country" {
   type = string  
+  default = ""
 }
 
 variable "postal_code" {
   type = string  
+  default = ""
 }
 
 variable "serial_number" {
   type = string  
+  default = ""
 }
 
 #-------------------------------------------------------------------------------
