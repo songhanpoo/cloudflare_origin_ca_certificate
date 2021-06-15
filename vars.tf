@@ -8,7 +8,7 @@ variable "algorithm" {
   default = "RSA"
   validation {
     # regex(...) fails if it cannot find a match
-    condition     = can(regex("^(RSA|ECDSA)$", var.algorithm))
+    condition     = can(regex("(RSA|ECDSA)", var.algorithm))
     error_message = "(Required) The name of the algorithm to use for the key. Currently-supported values are \"RSA\" and \"ECDSA\"."
   }
 }
