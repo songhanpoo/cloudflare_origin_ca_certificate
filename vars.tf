@@ -19,9 +19,9 @@ variable "rsa_bits" {
   default = "2048"
 }
 
-# ---------------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 # VARIABLE tls_cert_request
-# ---------------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 variable "dns_names" {
   type = list(string)
@@ -79,7 +79,6 @@ variable "serial_number" {
 # VARIABLE cloudflare_origin_ca_certificate
 #-------------------------------------------------------------------------------
 
-
 variable "hostnames" {
   type = list(string)
   description = "(Required) An array of hostnames or wildcard names bound to the certificate."
@@ -93,38 +92,6 @@ variable "request_type" {
 variable "requested_validity" {
   type = number
   description = "(Optional) The number of days for which the certificate should be valid."
-}
-
-
-
-#-------------------------------------------------------------------------------
-# VARIABLE authentication with cloudflare
-#-------------------------------------------------------------------------------
-
-
-variable "email" {
-  type = string
-  description = "This is email for authen with cloudflare"
-  validation {
-    # regex(...) fails if it cannot find a match
-    condition     = can(regex("^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$", var.email))
-    error_message = "The domain value must only support one-sub level for domain"
-  }
-}
-
-variable "api_user_service_key" {
-  type = string
-  description = "(Required) This is api_user_service_key for authen with cloudflare"
-}
-
-variable "api_key" {
-  type = string
-  description = "(Required) This is api_key for authen with cloudflare"
-}
-
-variable "api_token" {
-  type = string
-  description = "(Required) This is api_token for authen with cloudflare"
 }
 
 
